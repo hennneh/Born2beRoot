@@ -8,7 +8,7 @@ pdisk=$(df /home/ --output=pcent | grep "[0-9]")
 lvm=$(lsblk | grep "lvm" |wc -l)
 echo "#Architecture: $(uname -a)"
 echo "#CPU physical: $(nproc)"
-echo "#vCPU: $(cat /proc/cpuinfo | grep processor | cut -c13)"
+echo "#vCPU: $(grep "^processor" /proc/cpuinfo | wc -l)"
 echo "#Memory Usage: $uram/$fram"MB" ($pram%)"
 echo "#Disk Usage: $udisk/${fdisk//[[:blank:]]/}"b" (${pdisk//[[:blank:]]/})"
 echo "#CPU load: $(top -bn1 | grep '^%Cpu' | cut -c 10- | xargs | awk '{printf("%.1f%%", $1 + $3)}')"
