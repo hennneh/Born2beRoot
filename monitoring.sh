@@ -6,6 +6,7 @@ fdisk=$(df -H /home/ --output=avail | grep "[0-9]")
 udisk=$(df -m /home/ --output=used | grep "[0-9]")
 pdisk=$(df /home/ --output=pcent | grep "[0-9]")
 lvm=$(lsblk | grep "lvm" |wc -l)
+{
 echo "#Architecture: $(uname -a)"
 echo "#CPU physical: $(nproc)"
 echo "#vCPU: $(grep "^processor" /proc/cpuinfo | wc -l)"
@@ -18,3 +19,5 @@ echo "#Connexions TCP: $(cat /proc/net/sockstat{,6} | awk '$1 == "TCP:" {print $
 echo "#User log: $(users | wc -w)"
 echo "#Network: IP $(hostname -I | awk '{print $1}') ($(ip link show | awk '$1 == "link/ether" {print $2}'))"
 echo "Sudo: $(cat /var/log/sudo/logs |grep -c COMMAND) cmd"
+} > > (tee temp) 2>&1
+wall -n log
