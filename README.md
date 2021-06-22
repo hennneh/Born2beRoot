@@ -1,5 +1,15 @@
 # Born2beRoot
 
+A 42 project about creating your own virtual machine, following strict rules for partitions, sudo privileges, password policies, the firewall and ssh. 
+
+## Final grade : 125/125
+
+Mandatory part : 100/100
+
+Bonus : 25/25
+
+## Guide
+
 This guide assumes the VM has already been set up successfully and the LVM-partitions are working properly. 
 
 ## *sudo* 
